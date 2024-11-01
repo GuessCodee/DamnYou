@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moving No Button</title>
+    <style>
+        body{
+            margin-top: 55%;
+        }
+        /* Container to hold the content */
+        .container {
+            position: relative;
+            width: 800px;
+            height: 700px;
+            margin: 50px auto;
+            border: 2px solid #333;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Styling for question text */
+        .question {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        /* Wrapper to align buttons in one row */
+        .button-group {
+            display: flex;
+            gap: 40px;
+        }
+
+        /* Styling the "No" button */
+        .no-button {
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.2s ease;
+        }
+
+        /* Styling the "Yes" button */
+        .yes-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.2s ease;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="question">Do You Love Me?</h1>
+        <div class="button-group">
+          <a class="yes-button" id="yesButton" href="yes_click.html">Yes</a>
+          <button class="no-button" id="noButton">No</button>
+        </div>
+    </div>
+
+    <script>
+        // Get the "No" button and container elements
+        const noButton = document.getElementById("noButton");
+        const container = document.querySelector(".container");
+
+        function moveButton() {
+            // Get the dimensions of the container and the button
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = noButton.getBoundingClientRect();
+
+            // Calculate new random positions within the container bounds
+            const maxX = containerRect.width - buttonRect.width;
+            const maxY = containerRect.height - buttonRect.height;
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            // Set the new position of the "No" button
+            noButton.style.position = 'absolute'; 
+            noButton.style.left = `${randomX}px`;
+            noButton.style.top = `${randomY}px`;
+        }
+
+        // Move the button on mouse enter
+        
+        // Move the button on click
+        noButton.addEventListener("click", moveButton);
+    </script>
+</body>
+</html>
